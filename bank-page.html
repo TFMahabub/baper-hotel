@@ -9,39 +9,59 @@
 </head>
 <body>
   <!-- ==========header-text========== -->
-  <header class="text-center mt-20">
+  <header class="text-center mt-10">
     <h1 class="text-5xl font-semibold text-blue-400">Let's get <span class="font-bold text-green-500">Moooooooney!!!</span></h1>
   </header>
-  <!-- ===========logIn-information========== -->
+  <!-- ===========input-information========== -->
   <main>
-      <section class="mt-12 w-[70%] mx-auto">
+      <section class="mt-16 w-[70%] mx-auto">
         <div class="grid grid-cols-3 gap-10 text-white">
 
           <div class="bg-yellow-500 rounded-lg">
             <div class="p-8">
               <h2 class="text-2xl text-center font-semibold">Deposit</h2>
-              <h1 class="text-5xl text-center font-semibold">$000</h1>
+              <h1 class="text-5xl text-center font-semibold">$<span id="deposit-num">000</span></h1>
             </div>
           </div>
           <div class="bg-green-500 rounded-lg">
             <div class="p-8">
-              <h2 class="text-2xl text-center font-semibold">Deposit</h2>
-              <h1 class="text-5xl text-center font-semibold">$000</h1>
+              <h2 class="text-2xl text-center font-semibold">Widthrow</h2>
+              <h1 class="text-5xl text-center font-semibold">$<span id="widthraw-num">000</span></h1>
             </div>
           </div>
           <div class="bg-blue-500 rounded-lg">
             <div class="p-8">
-              <h2 class="text-2xl text-center font-semibold">Deposit</h2>
-              <h1 class="text-5xl text-center font-semibold">$000</h1>
+              <h2 class="text-2xl text-center font-semibold">Main Balance</h2>
+              <h1 class="text-5xl text-center font-semibold">$<span id="main-balance">800</span></h1>
             </div>
           </div>
 
         </div>
         
       </section>
+
+      <!-- -----input-section----- -->
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10 mx-8 md:mx-20 lg:mx-52">
+        <!-- -----deposit-section----- -->
+        <div class="bg-blue-500 rounded-lg p-8 ">
+          <span class="block text-white text-3xl font-semibold">Deposit Amount</span>
+          <input id="input-id" class="p-1 block my-2 rounded-sm w-[90%]" type="number" placeholder="Enter amount to deposit">
+          <!-- button -->
+          <button id="deposit-button" class="px-3 py-2 bg-yellow-500 rounded-md text-white">Deposit</button>
+        </div>
+        <!-- --------widthraw-section-------- -->
+        <div class="bg-green-500 rounded-lg p-8 ">
+          <span class="block text-white text-3xl font-semibold">Widthraw Amount</span>
+          <input id="input-field" class="p-1 block my-2 rounded-sm w-[90%]" type="number" placeholder="Enter amount to Widthraw">
+          <!-- button -->
+          <button id="widthraw-btn" class="px-3 py-2 bg-blue-500 rounded-md text-white">Widthraw</button>
+        </div>
+
+      </section>
   </main>
   
 
   <!-- ===========js-file-connection=========== -->
+  <script src="bank-page.js"></script>
 </body>
 </html>
