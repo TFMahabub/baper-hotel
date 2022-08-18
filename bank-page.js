@@ -34,22 +34,31 @@ document.getElementById('widthraw-btn').addEventListener('click', function(){
   const inputText = document.getElementById('input-field');
         inputValueString = inputText.value;
         inputValueFloat = parseFloat(inputValueString);
-  
+        
   //widthraw num change-
   const widthrawNumbertText = document.getElementById('widthraw-num');
         widthrawNumber = widthrawNumbertText.innerText;
         widthrawNumbertFloat = parseFloat(widthrawNumber);
 
-  //sum widthraw numtext-
-  widthrawNumbertText.innerText = inputValueFloat + widthrawNumbertFloat;
-
+  
   //main balance calculaton-
   const mainBalanceText = document.getElementById('main-balance');
         mainBalanceInner = mainBalanceText.innerText;
         mainBalanceFloat = parseFloat(mainBalanceInner);
 
-  mainBalanceText.innerText = mainBalanceFloat - inputValueFloat;
-
   //eamty input value-
   inputText.value = '';
+
+    //alert for hieghest num from main balance-
+    if(inputValueFloat > mainBalanceFloat){
+      alert('baper bank a ato taka nai');
+      return;
+    }      
+
+  //sum widthraw numtext-
+  widthrawNumbertText.innerText = inputValueFloat + widthrawNumbertFloat;
+
+  //main balance calculation-
+  mainBalanceText.innerText = mainBalanceFloat - inputValueFloat;
+
 })
