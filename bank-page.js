@@ -1,64 +1,63 @@
-//=========== Deposit =============
+
+//-------------Deposit button--------------
 document.getElementById('deposit-button').addEventListener('click', function(){
-  //deposit input-
-  const inputText = document.getElementById('input-id');
-        inputValueText = inputText.value;
-        inputValueFloat = parseFloat(inputValueText);
-  
-  //Deposit number text-
-  const depositNumberText = document.getElementById('deposit-num');
-        depositNumber = depositNumberText.innerText;
-        depositNumberFloat = parseFloat(depositNumber);
-        
-  //sum the deposit value-
-  depositNumberText.innerText = depositNumberFloat + inputValueFloat;
+  //deposit-input-value-
+  const input = document.getElementById('input-id');
+  inputValue = input.value;
+  inputValueFloat = parseFloat(inputValue);
 
-  //main balance calculaton-
-  const mainBalanceText = document.getElementById('main-balance');
-        mainBalanceInner = mainBalanceText.innerText;
-        mainBalanceFloat = parseFloat(mainBalanceInner);
+  //display deposit balance value-
+  const depositBalance = document.getElementById('deposit-num');
+  depositBalanceInner = depositBalance.innerText;
+  depositBalanceFloat = parseFloat(depositBalanceInner);
 
-  //sum main balance value-
-  mainBalanceText.innerText = mainBalanceFloat + inputValueFloat;
+  //main balance value-
+  const mainBalance = document.getElementById('main-balance');
+  mainBalanceInner = mainBalance.innerText;
+  mainBalanceFloat = parseFloat(mainBalanceInner);
 
-  //to emety input field-
-  inputText.value = '';
+  //------------main calculation---------------
+  //deposit balance-
+  depositBalance.innerText = depositBalanceFloat + inputValueFloat;
+  //main balance-
+  mainBalance.innerText = mainBalanceFloat + inputValueFloat;
+
+  //input value emtey-
+  input.value = '';
 })
 
 
 
-
-//=========== Widthraw-button =============
-document.getElementById('widthraw-btn').addEventListener('click', function(){
-  //input-value-
-  const inputText = document.getElementById('input-field');
-        inputValueString = inputText.value;
-        inputValueFloat = parseFloat(inputValueString);
-        
-  //widthraw num change-
-  const widthrawNumbertText = document.getElementById('widthraw-num');
-        widthrawNumber = widthrawNumbertText.innerText;
-        widthrawNumbertFloat = parseFloat(widthrawNumber);
-
+//---------------//Widthraw button----------------
+document.getElementById('widthraw-button').addEventListener('click', function(){
+  //widthraw input value-
+  const input = document.getElementById('input-field');
+  inputValue = input.value;
+  inputValueFloat = parseFloat(inputValue);
   
-  //main balance calculaton-
-  const mainBalanceText = document.getElementById('main-balance');
-        mainBalanceInner = mainBalanceText.innerText;
-        mainBalanceFloat = parseFloat(mainBalanceInner);
+  //display widthraw balance-
+  const widthrawBalance = document.getElementById('widthraw-num');
+  widthrawBalanceInnerText = widthrawBalance.innerText;
+  widthrawBalanceFloat = parseFloat(widthrawBalanceInnerText);
+  
+  //main balance value-
+  const mainBalance = document.getElementById('main-balance');
+  mainBalanceInner = mainBalance.innerText;
+  mainBalanceFloat = parseFloat(mainBalanceInner);
 
   //eamty input value-
-  inputText.value = '';
+  input.value = '';
 
-    //alert for hieghest num from main balance-
-    if(inputValueFloat > mainBalanceFloat){
-      alert('baper bank a ato taka nai');
-      return;
-    }      
+  //condition for error balance-
+  if(mainBalanceFloat < inputValueFloat){
+    alert('baper bank e ato taka nai');
+    return
+  }
 
-  //sum widthraw numtext-
-  widthrawNumbertText.innerText = inputValueFloat + widthrawNumbertFloat;
+  //-------main calculation---------
+  //display widthraw balance-
+  widthrawBalance.innerText = inputValueFloat + widthrawBalanceFloat;
 
-  //main balance calculation-
-  mainBalanceText.innerText = mainBalanceFloat - inputValueFloat;
-
+  //main balance-
+  mainBalance.innerText = mainBalanceFloat - inputValue;
 })
