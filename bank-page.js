@@ -51,7 +51,7 @@ document.getElementById('widthraw-button').addEventListener('click', function(){
   //condition for error balance-
   if(mainBalanceFloat < inputValueFloat){
     alert('baper bank e ato taka nai');
-    return
+    return;
   }
 
   //-------main calculation---------
