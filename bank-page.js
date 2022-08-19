@@ -1,63 +1,75 @@
+//------------------Function-----------------
 
-//-------------Deposit button--------------
+//function for input value-
+function getInputValueFloat(inputId){
+  const inputValueText = document.getElementById(inputId);
+  const inputValue = inputValueText.value;
+  const inputValueFloat = parseFloat(inputValue);
+  inputValueText.value = '';
+
+  return inputValueFloat;
+}
+
+//function for displat innerText-
+function getElementInnerTextFloat(displatNumTextId){
+  const displayNumText = document.getElementById(displatNumTextId);
+  const displayNumInner = displayNumText.innerText;
+  const displayNumFloat = parseFloat(displayNumInner);
+
+  return displayNumFloat;
+}
+
+//function for set display innerText-
+function setDisplayValue(displayNumId, valueToSet){
+  const displayNum = document.getElementById(displayNumId);
+  displayNum.innerText = valueToSet;
+}
+
+
+//--------------calculation---------------
+//deposit-button-
 document.getElementById('deposit-button').addEventListener('click', function(){
-  //deposit-input-value-
-  const input = document.getElementById('input-id');
-  inputValue = input.value;
-  inputValueFloat = parseFloat(inputValue);
+  //set variable to input box-
+  const inputValueFloat = getInputValueFloat('input-id');
+  const displayInnerText = getElementInnerTextFloat('deposit-num');
+  const displayMainBalance = getElementInnerTextFloat('main-balance');
 
-  //display deposit balance value-
-  const depositBalance = document.getElementById('deposit-num');
-  depositBalanceInner = depositBalance.innerText;
-  depositBalanceFloat = parseFloat(depositBalanceInner);
-
-  //main balance value-
-  const mainBalance = document.getElementById('main-balance');
-  mainBalanceInner = mainBalance.innerText;
-  mainBalanceFloat = parseFloat(mainBalanceInner);
-
-  //------------main calculation---------------
-  //deposit balance-
-  depositBalance.innerText = depositBalanceFloat + inputValueFloat;
-  //main balance-
-  mainBalance.innerText = mainBalanceFloat + inputValueFloat;
-
-  //input value emtey-
-  input.value = '';
-})
-
-
-
-//---------------//Widthraw button----------------
-document.getElementById('widthraw-button').addEventListener('click', function(){
-  //widthraw input value-
-  const input = document.getElementById('input-field');
-  inputValue = input.value;
-  inputValueFloat = parseFloat(inputValue);
-  
-  //display widthraw balance-
-  const widthrawBalance = document.getElementById('widthraw-num');
-  widthrawBalanceInnerText = widthrawBalance.innerText;
-  widthrawBalanceFloat = parseFloat(widthrawBalanceInnerText);
-  
-  //main balance value-
-  const mainBalance = document.getElementById('main-balance');
-  mainBalanceInner = mainBalance.innerText;
-  mainBalanceFloat = parseFloat(mainBalanceInner);
-
-  //eamty input value-
-  input.value = '';
-
-  //condition for error balance-
-  if(mainBalanceFloat < inputValueFloat){
-    alert('baper bank e ato taka nai');
-    return;
+  //condition for input emtey-
+  if(isNaN(inputValueFloat)){
+    return alert('Please Enter a number');
   }
 
-  //-------main calculation---------
-  //display widthraw balance-
-  widthrawBalance.innerText = inputValueFloat + widthrawBalanceFloat;
+  //calculation for sum withdraw value-
+  const sumTheValue = inputValueFloat + displayInnerText;
+  setDisplayValue('deposit-num', sumTheValue);
 
-  //main balance-
-  mainBalance.innerText = mainBalanceFloat - inputValue;
+   //calculation add main balance-
+  const sumDisplayValue = displayMainBalance + inputValueFloat;
+  setDisplayValue('main-balance', sumDisplayValue);
+})
+
+//widthraw-button-
+document.getElementById('widthraw-button').addEventListener('click', function(){
+  //set variable to input box-
+  const inputValueFloat = getInputValueFloat('input-field');
+  const displayInnerText = getElementInnerTextFloat('widthraw-num');
+  const displayMainBalance = getElementInnerTextFloat('main-balance'); 
+
+  //condition for input emtey-
+  if(isNaN(inputValueFloat)){
+    return alert('Please Enter a number');
+  }
+
+  //condition for to much money widthraw-
+  else if(inputValueFloat > displayMainBalance){
+    return alert('Bap er Bank a ato taka nai');
+  }
+
+  //calculation for sum withdraw value-
+  const sumTheValue = displayInnerText + inputValueFloat;
+  setDisplayValue('widthraw-num', sumTheValue);
+
+  //calculation remain main balance-
+  const devidedDisplayMainBalance = displayMainBalance - inputValueFloat;
+  setDisplayValue('main-balance', devidedDisplayMainBalance);
 })
